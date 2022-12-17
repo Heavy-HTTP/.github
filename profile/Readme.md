@@ -68,3 +68,117 @@ Any temporary/permanent storage mechanism that provides signed URLs for upload a
 * The flow from 8 - 11 is not necessarily to be the same as it is mentioned in the protocol. The developer has the freedom to modify that particular flow. For further information please refer adasdasdasd
 
 ### Heavy HTTP Implementation
+* Usage of Web HTTP Client Connector in a React APP.
+	* index.js
+	```
+	import React from 'react';
+	import ReactDOM from 'react-dom/client';
+	import './index.css';
+	import App from './App';
+	import { initialize } from '@heavy-http/web-client-connector';
+	import reportWebVitals from './reportWebVitals';
+
+	initialize({ requestThreshold: 1 });
+
+	const root = ReactDOM.createRoot(document.getElementById('root'));
+	root.render(
+	  <React.StrictMode>
+	    <App />
+	  </React.StrictMode>
+	);
+
+	reportWebVitals();
+
+	```
+	* App.js
+
+
+	```
+	import './App.css';
+	import axios from 'axios';
+	import pako from 'pako';
+
+	function App() {
+	  return (
+	    <div className="App">
+	      <header className="App-header">
+
+		<button onClick={async () => {
+		  const response = await axios.post('http://localhost:3010/test', { "dummyKey": "dummyValue" });
+		  console.log("response", response)
+		}}>
+		  Fire Uncompressed Request
+		</button>
+
+		<hr/>
+
+		<button onClick={async () => {
+		  const compressedStr = pako.gzip(JSON.stringify({ "dummyKey": "dummyValue" }), { to: 'string' });
+		  const response = await axios.post('http://localhost:3010/test', compressedStr, {
+		    headers: {
+		      'Content-Type': 'text/plain',
+		      'Content-Encoding': 'gzip'
+		    }
+		  });
+		  console.log("response", response)
+		}}>
+		  Fire Compressed Request
+		</button>
+
+	      </header>
+	    </div>
+	  );
+	}
+
+	export default App;
+
+	```
+* Usage of Node HTTP Server Connector in an Express APP.
+	```
+	const express = require('express')
+	const cors = require('cors');
+
+	const heavyHttp = require('@heavy-http/node-server-connector');
+	const s3Transporter = require('./s3-transporter');
+
+	const app = express()
+	const port = 3010
+
+	app.use(cors({
+	  origin: 'http://localhost:3000',
+	  exposedHeaders: ['x-heavy-http-action', 'x-heavy-http-id']
+	}));
+
+	const { requestHandler, responseHandler } = heavyHttp.connector({ responseThreshold: 1 }, s3Transporter('bucket-name', 3600))
+
+	app.use(requestHandler);
+	app.use(responseHandler);
+	app.use(express.text({ inflate: true }))
+	app.use(express.json());
+	app.use(express.urlencoded({ extended: true }))
+
+	app.post('/test', async (req, res) => {
+	  console.log('request body',req.body)
+	  res.write('content')
+	  res.write('||more content||')
+	  res.end('final content');
+	})
+
+	app.listen(port, () => {
+	  console.log(`Example app listening on port ${port}`)
+	})
+
+	```
+
+	* For S3-Transporter please refer sdsssdsdsdsdsd
+	
+### Looking Ahead :eyes:
+
+We are still in phase 1. There is a long journey ahead and we indent to move forward. 
+
+#### Game Plan
+1. The Web HTTP Client currently supports XMLHTTPRequest path only. Extending the capabilities to Fetch API is the next milestone. 
+2. On the client side Heavy HTTP Client implementations for runtimes like Java and Node are the next priority. 
+3. On the server side Heavy HTTP Server implementations for runtimes like Java and Go are the next priority. 
+
+If you are interested in this project and willing to help with coding, ideologies, testing or documentation, share your interest with us by dropping a message to heavyhttp@gmail.com.
