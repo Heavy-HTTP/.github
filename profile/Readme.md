@@ -35,7 +35,7 @@ Heavy HTTP Client is an extension of the default HTTP Client that is used in the
 #### Looking under the hood 
 At the initialization of the request Heavy HTTP Client performs the following operations
 1. Identify the type of the payload and estimate the size of the payload.
-2. If the size of the payload is beyond the configured threshold shift to the Heavy Http Transporter to continue the communication. If not proceed with the existing communication pattern. 
+2. If the size of the payload is beyond the configured threshold shift to the Heavy HTTP Transporter to continue the communication. If not proceed with the existing communication pattern. 
 3. Provide the seamless experience of HTTP client to the HTTP Client wrapper library. 
 
 When receiving the response Heavy HTTP Client performs the following operations
@@ -54,7 +54,7 @@ When receiving the request from HTTP Client, Heavy HTTP Server performs the foll
 
 When sending the response to HTTP Client, Heavy HTTP Server performs the following operations
 1. Identify the type of the payload and estimate the size of the payload.
-2. If the size of the payload is beyond the configured threshold shift to the Heavy Http Transporter to continue the communication. If not proceed with the existing communication pattern. 
+2. If the size of the payload is beyond the configured threshold shift to the Heavy HTTP Transporter to continue the communication. If not proceed with the existing communication pattern. 
 3. Provide the seamless experience of HTTP response to the HTTP Client. (If the response is a heavy response, then the HTTP Client must be a Heavy HTTP Client to understand the protocol). 
 
 ### Heavy HTTP Transporter
@@ -68,7 +68,7 @@ Any temporary/permanent storage mechanism that provides signed URLs for upload a
 * The flow from 8 - 11 is not necessarily to be the same as it is mentioned in the protocol. The developer has the freedom to modify that particular flow. For further information please refer adasdasdasd
 
 ### Heavy HTTP Implementation
-* Usage of Web HTTP Client Connector in a React APP.
+* Usage of Web HTTP Client Connector in a React App.
 	* index.js
 	```
 	import React from 'react';
@@ -133,7 +133,7 @@ Any temporary/permanent storage mechanism that provides signed URLs for upload a
 	export default App;
 
 	```
-* Usage of Node HTTP Server Connector in an Express APP.
+* Usage of Node HTTP Server Connector in an Express App.
 	```
 	const express = require('express')
 	const cors = require('cors');
