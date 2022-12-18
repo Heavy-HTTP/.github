@@ -30,7 +30,7 @@ Heavy HTTP consists of three main components
 
 
 ### Heavy HTTP Client Connector
-Heavy HTTP Client is an extension of the default HTTP Client that is used in the application.  If the application is a browser, Heavy HTTP Client extends the XMLHttpRequest and Fetch API* and if the application is written in Node JS then Heavy HTTP Client extends the Node HTTP Client*. For all the HTTP communication the extended Heavy HTTP Client is exposed via the same interface. Because of this pattern, regardless of the HTTP client wrapper library (Axios, Node Fetch etc) that is used in the application, Heavy HTTP can perform its magic. 
+Heavy HTTP Client is an extension of the default HTTP Client that is used in the application.  If the application is a browser, Heavy HTTP Client extends the XMLHttpRequest and Fetch API and if the application is written in Node JS then Heavy HTTP Client extends the Node HTTP Client. For all the HTTP communication the extended Heavy HTTP Client is exposed via the same interface. Because of this pattern, regardless of the HTTP client wrapper library (Axios, Node Fetch etc) that is used in the application, Heavy HTTP can perform its magic. 
 
 #### Looking under the hood 
 At the initialization of the request Heavy HTTP Client performs the following operations
