@@ -1,6 +1,6 @@
 # Heavy HTTP
 
-With Rest and HTTP, the request-response pattern has almost concerned the Client-Server communication.  Even though the combination of Rest and HTTP provides an illusion of a universal methodology for communication there are many practical limitations in this approach. By introducing Heavy HTTP, we solve one of the key practical limitations of this communication pattern and extends its capabilities. 
+The Rest and HTTP request-response pattern has almost conquered the Client-Server communication.  Even though the combination of Rest and HTTP provides an illusion of a universal methodology for communication there are many practical limitations in this approach. By introducing Heavy HTTP, we solve one of the key practical limitations of this communication pattern and extends its capabilities. 
 
 The size of the payload of requests/responses is one of the most significant practical limitations in this pattern. With the latest trends, modern web applications more often exchange large amounts of data back and forth with HTTP and Rest. But with a single HTTP request/response, the process is highly inefficient. Not just that most of the server implementations can't handle large requests/responses. As an example, these are the payload size limits of the Request/Response handling interfaces of the world's largest cloud service providers. 
 
