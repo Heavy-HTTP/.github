@@ -58,14 +58,14 @@ When sending the response to HTTP Client, Heavy HTTP Server performs the followi
 3. Provide the seamless experience of HTTP response to the HTTP Client. (If the response is a heavy response, then the HTTP Client must be a Heavy HTTP Client to understand the protocol). 
 
 ### Heavy HTTP Transporter
-Any temporary/permanent storage mechanism that provides signed URLs for upload and download purposes can be a transporter. The transporter is attached to the Heavy HTTP Server so that it is fully decoupled from the Heavy HTTP client. Multiple transporters are already created for the popular storages in the sdsdsd repo and they are ready to go. But if you would like to create your own transporter you can do it by just following the sdsddsds section in Heavy HTTP Server. This gives you the control of handling the request and response as you like. If you want to process the request in lazy manner (given that request is heavy) that also can be acheived as well. For further information please refer adasdasdasd
+Any temporary/permanent storage mechanism that provides signed URLs for upload and download purposes can be a transporter. The transporter is attached to the Heavy HTTP Server so that it is fully decoupled from the Heavy HTTP client. Multiple transporters are already created for the popular storages in the sdsdsd repo and they are ready to go. But if you would like to create your own transporter you can do it by just following the sdsddsds section in Heavy HTTP Server. This gives you the control of handling the request and response as you like. If you want to process the request in lazy manner (given that request is heavy) that also can be acheived as well. For further information please refer [Heavy-HTTP/transporters](https://github.com/Heavy-HTTP/transporters#readme).
 
 ### Heavy HTTP Communication Protocol 
 ![alt text](https://github.com/Heavy-HTTP/.github/blob/main/profile/Heavy-HTTP-Communication-Protocol.png?raw=true)
 
 * The flow from 1 - 11 only gets triggers if the request body is size greater than the request content threshold. Otherwise, the original request would flow to the server without any changes.
 * The flow from 12 - 20 only gets triggers if the response body is size greater than the response content threshold. Otherwise, the original response would flow to the client without any changes.
-* The flow from 8 - 11 is not necessarily to be the same as it is mentioned in the protocol. The developer has the freedom to modify that particular flow. For further information please refer adasdasdasd
+* The flow from 8 - 11 is not necessarily to be the same as it is mentioned in the protocol. The developer has the freedom to modify that particular flow. For further information please refer [Advance-Implementation-of-Transporter-Interface](https://github.com/Heavy-HTTP/transporters#advance-implementation-of-transporter-interface).
 
 ### Heavy HTTP Implementation
 * Usage of Web HTTP Client Connector in a React App.
@@ -170,7 +170,7 @@ Any temporary/permanent storage mechanism that provides signed URLs for upload a
 
 	```
 
-	* For S3-Transporter please refer sdsssdsdsdsdsd
+	* For S3-Transporter please refer [S3-Node-default-transporter](https://github.com/Heavy-HTTP/transporters/blob/main/S3/S3-Node-default-transporter.js).
 	
 ### Looking Ahead :eyes:
 
