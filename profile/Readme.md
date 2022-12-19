@@ -30,15 +30,15 @@ Heavy HTTP consists of three main components
 
 
 ### Heavy HTTP Client Connector
-Heavy HTTP Client is an extension of the default HTTP Client that is used in the application.  If the application is a browser, Heavy HTTP Client extends the XMLHttpRequest and Fetch API and if the application is written in Node JS then Heavy HTTP Client extends the Node HTTP Client. For all the HTTP communication the extended Heavy HTTP Client is exposed via the same interface. Because of this pattern, regardless of the HTTP client wrapper library (Axios, Node Fetch etc) that is used in the application, Heavy HTTP can perform its magic. 
+Heavy HTTP Client Connector is an extension of the default HTTP Client that is used in the application.  If the application is a browser, Heavy HTTP Client Connector extends the XMLHttpRequest and Fetch API and if the application is written in Node JS then Heavy HTTP Client Connector extends the Node HTTP Client. For all the HTTP communication the extended Heavy HTTP Client is exposed via the same interface. Because of this pattern, regardless of the HTTP client wrapper library (Axios, Node HTTP etc) that is used in the application, Heavy HTTP can perform its magic. 
 
 #### Looking under the hood 
-At the initialization of the request Heavy HTTP Client performs the following operations
+At the initialization of the request Heavy HTTP Client Connector performs the following operations
 1. Identify the type of the payload and estimate the size of the payload.
 2. If the size of the payload is beyond the configured threshold shift to the Heavy HTTP Transporter to continue the communication. If not proceed with the existing communication pattern. 
 3. Provide the seamless experience of HTTP client to the HTTP Client wrapper library. 
 
-When receiving the response Heavy HTTP Client performs the following operations
+When receiving the response Heavy HTTP Client Connector performs the following operations
 1. Check whether the response is a Heavy Response or not. 
 2. If it's a Heavy Response then shift to the Heavy Http Transporter to fetch the data. Otherwise, proceed with the existing communication pattern. 
 3. Provide the seamless experience of HTTP client to the HTTP Client wrapper library. 
@@ -47,12 +47,12 @@ When receiving the response Heavy HTTP Client performs the following operations
 This is a runtime-specific library which is responsible for the server end of communication with the Heavy HTTP Client that makes the request. Since the library is runtime-specific it needs to be attached to the runtime as an HTTP interceptor. Since the library is attached as an interceptor whatever the APIs provided by the runtime can be used without an issue with the library. Similar to the Heavy HTTP Client, Heavy HTTP Server also can perform its magic regardless of which API is used for the communication. 
 
 #### Looking under the hood 
-When receiving the request from HTTP Client, Heavy HTTP Server performs the following operations
+When receiving the request from HTTP Client, Heavy HTTP Server Connector performs the following operations
 1. Identify whether the request is a Heavy Request or not (Based on request headers). 
 2. If it's a Heavy Request shift to the Heavy Http Transporter to fetch the request data. Otherwise, proceed with the existing communication pattern. 
 3. Provide the seamless experience of the HTTP request to the runtime APIs. 
 
-When sending the response to HTTP Client, Heavy HTTP Server performs the following operations
+When sending the response to HTTP Client, Heavy HTTP Server Connector performs the following operations
 1. Identify the type of the payload and estimate the size of the payload.
 2. If the size of the payload is beyond the configured threshold shift to the Heavy HTTP Transporter to continue the communication. If not proceed with the existing communication pattern. 
 3. Provide the seamless experience of HTTP response to the HTTP Client. (If the response is a heavy response, then the HTTP Client must be a Heavy HTTP Client to understand the protocol). 
@@ -68,7 +68,7 @@ Any temporary/permanent storage mechanism that provides signed URLs for upload a
 * The flow from 8 - 11 is not necessarily to be the same as it is mentioned in the protocol. The developer has the freedom to modify that particular flow. For further information please refer [Advance-Implementation-of-Transporter-Interface](https://github.com/Heavy-HTTP/transporters#advance-implementation-of-transporter-interface).
 
 ### Heavy HTTP Implementation
-* Usage of Web HTTP Client Connector in a React App.
+* Usage of [Web Client Connector](https://github.com/Heavy-HTTP/web-client-connector) in a React App.
 	* index.js
 	```
 	import React from 'react';
@@ -133,7 +133,7 @@ Any temporary/permanent storage mechanism that provides signed URLs for upload a
 	export default App;
 
 	```
-* Usage of Node HTTP Server Connector in an Express App.
+* Usage of [Node Server Connector](https://github.com/Heavy-HTTP/node-server-connector) in an Express App.
 	```
 	const express = require('express')
 	const cors = require('cors');
@@ -171,6 +171,9 @@ Any temporary/permanent storage mechanism that provides signed URLs for upload a
 	```
 
 	* For S3-Transporter please refer [S3-Node-default-transporter](https://github.com/Heavy-HTTP/transporters/blob/main/S3/S3-Node-default-transporter.js).
+
+### Security
+Under the hood, Heavy HTTP utilizes default HTTP for all communications. Because of that Heavy HTTP communications are secured as default HTTP communications. When it comes to Transporter (Storage) layer, Heavy HTTP doesn't provide any guidelines in terms of security aspects. So it's up to the developer to keep the Storage layer secure. For further reading please refer to [Heavy-HTTP Transporter Security](dsdsdsds). So in summary **Heavy HTTP neither increases nor decreases the level of security of the communication**.
 	
 ### Looking Ahead :eyes:
 
