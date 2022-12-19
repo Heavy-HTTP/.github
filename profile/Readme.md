@@ -173,7 +173,7 @@ Any temporary/permanent storage mechanism that provides signed URLs for upload a
 	* For S3-Transporter please refer [S3-Node-default-transporter](https://github.com/Heavy-HTTP/transporters/blob/main/S3/S3-Node-default-transporter.js).
 
 ### Security
-Under the hood, Heavy HTTP utilizes default HTTP for all communications. Because of that Heavy HTTP communications are secured as default HTTP communications. When it comes to Transporter (Storage) layer, Heavy HTTP doesn't provide any guidelines in terms of security aspects. So it's up to the developer to keep the Storage layer secure. For further reading please refer to [Heavy-HTTP Transporter Security](dsdsdsds). So in summary **Heavy HTTP neither increases nor decreases the level of security of the communication**.
+Under the hood, Heavy HTTP utilizes default HTTP for all communications. Because of that Heavy HTTP communications are secured as default HTTP communications. When it comes to Transporter (Storage) layer, Heavy HTTP doesn't provide any guidelines in terms of security aspects. So it's up to the developer to keep the Storage layer secure. For further reading please refer to [Heavy-HTTP Transporter Security](https://github.com/Heavy-HTTP/transporters#transporter-security). So in summary **Heavy HTTP neither increases nor decreases the level of security of the communication**.
 	
 ### Looking Ahead :eyes:
 
