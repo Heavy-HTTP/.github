@@ -12,10 +12,10 @@ The size of the payload of requests/responses is one of the most significant pra
 
 This payload size limitation literally ties our hands because, 
 
-1. You never know when the payload will go beyond the threshold 
-	In web applications, it's hard to predict the client inputs. They may send a little amount of information or a very big chunk of data. Same as in the server end. With complex relationship models, even with pagination, the payload size can vary in a vast range. That means either some of the client inputs or server responses will be ignored (crashed!) because no one can predict the size of the data. 
+1. **You never know when the payload will go beyond the threshold**\
+	In client applications, it's hard to predict the client inputs. They may send a little amount of information or a very big chunk of data. The same would happen on the server end as well. With complex relationship models, even with pagination, the payload size can vary in a vast range. That means either some of the client inputs or server responses will be ignored (crashed!) because no one can predict the size of the data. 
 
-2. Implementation of alternative methods requires a lot of effort
+2. **Implementation of alternative methods requires a lot of effort**\
 	Providing an alternative communication would require additional boilerplate code and logic on both client and server ends. And the problem becomes much worse when it is required to measure the payload size depending on the payload type.
   
 When you deal with large payload sizes the next inherent issue is connection time limitations. When the request is heavy it most likely takes a longer time to process and that could lead to connection timeouts. Wouldn't it be cool if it's possible to handle heavy requests asynchronously while handling other requests synchronously? 
