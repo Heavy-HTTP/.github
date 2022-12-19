@@ -1,6 +1,6 @@
 # Heavy HTTP
 
-The Rest and HTTP request-response pattern has almost conquered the Client-Server communication.  Even though the combination of Rest and HTTP provides an illusion of a universal methodology for communication there are many practical limitations in this approach. By introducing Heavy HTTP, we solve one of the key practical limitations of this communication pattern and extends its capabilities. 
+The Rest and HTTP request-response pattern has almost conquered Client-Server communication.  Even though the combination of Rest and HTTP provides an illusion of a universal methodology for communication there are many practical limitations in this approach. By introducing Heavy HTTP, we solve one of the key practical limitations of this communication pattern and extend its capabilities. 
 
 The size of the payload of requests/responses is one of the most significant practical limitations in this pattern. With the latest trends, modern web applications more often exchange large amounts of data back and forth with HTTP and Rest. But with a single HTTP request/response, the process is highly inefficient. Not just that most of the server implementations can't handle large requests/responses. As an example, these are the payload size limits of the Request/Response handling interfaces of the world's largest cloud service providers. 
 
@@ -16,11 +16,11 @@ This payload size limitation literally ties our hands because,
 	In web applications, it's hard to predict the client inputs. They may send a little amount of information or a very big chunk of data. Same as in the server end. With complex relationship models, even with pagination, the payload size can vary in a vast range. That means either some of the client inputs or server responses will be ignored (crashed!) because no one can predict the size of the data. 
 
 2. Implementation of alternative methods requires a lot of effort
-	Providing an alternative communication would require additional boilerplate code and logic on both client and server ends. And the problem becomes much worse when it is required to measure the payload size depending on payload type.
+	Providing an alternative communication would require additional boilerplate code and logic on both client and server ends. And the problem becomes much worse when it is required to measure the payload size depending on the payload type.
   
 When you deal with large payload sizes the next inherent issue is connection time limitations. When the request is heavy it most likely takes a longer time to process and that could lead to connection timeouts. Wouldn't it be cool if it's possible to handle heavy requests asynchronously while handling other requests synchronously? 
 
-Well **Heavy HTTP** is there to save you from all the trouble. **Heavy HTTP is a utility framework that automatically handles the payload limitations in client-server Rest HTTP communication with very minimal configurations**. It utilizes signed URLs as an alternative communication pattern to overcome the payload size limitation and provides transporters to control the request data in the server side. Most importantly, it doesn't interrupt the existing communication patterns. So only by performing very few modifications, any existing application can be retrofitted to work with Heavy HTTP. 
+Well, **Heavy HTTP** is there to save you from all the trouble. **Heavy HTTP is a utility framework that automatically handles the payload limitations in client-server Rest HTTP communication with very minimal configurations**. It utilizes signed URLs as an alternative communication pattern to overcome the payload size limitation and provides transporters to control the request data on the server side. Most importantly, it doesn't interrupt the existing communication patterns. So only by performing very few modifications, any existing application can be retrofitted to work with Heavy HTTP. 
 
 Heavy HTTP consists of three main components 
 
@@ -44,7 +44,7 @@ When receiving the response Heavy HTTP Client Connector performs the following o
 3. Provide the seamless experience of HTTP client to the HTTP Client wrapper library. 
 
 ### Heavy HTTP Server Connector
-This is a runtime-specific library which is responsible for the server end of communication with the Heavy HTTP Client that makes the request. Since the library is runtime-specific it needs to be attached to the runtime as an HTTP interceptor. Since the library is attached as an interceptor whatever the APIs provided by the runtime can be used without an issue with the library. Similar to the Heavy HTTP Client, Heavy HTTP Server also can perform its magic regardless of which API is used for the communication. 
+This is a runtime-specific library that is responsible for the server end of communication with the Heavy HTTP Client that makes the request. Since the library is runtime-specific it needs to be attached to the runtime as an HTTP interceptor. Since the library is attached as an interceptor whatever the APIs provided by the runtime can be used without an issue with the library. Similar to the Heavy HTTP Client, Heavy HTTP Server also can perform its magic regardless of which API is used for the communication. 
 
 #### Looking under the hood 
 When receiving the request from HTTP Client, Heavy HTTP Server Connector performs the following operations
@@ -58,7 +58,7 @@ When sending the response to HTTP Client, Heavy HTTP Server Connector performs t
 3. Provide the seamless experience of HTTP response to the HTTP Client. (If the response is a heavy response, then the HTTP Client must be a Heavy HTTP Client to understand the protocol). 
 
 ### Heavy HTTP Transporter
-Any temporary/permanent storage mechanism that provides signed URLs for upload and download purposes can be a transporter. The transporter is attached to the Heavy HTTP Server so that it is fully decoupled from the Heavy HTTP client. Multiple transporters are already created for the popular storages in the sdsdsd repo and they are ready to go. But if you would like to create your own transporter you can do it by just following the sdsddsds section in Heavy HTTP Server. This gives you the control of handling the request and response as you like. If you want to process the request in lazy manner (given that request is heavy) that also can be acheived as well. For further information please refer [Heavy-HTTP/transporters](https://github.com/Heavy-HTTP/transporters#readme).
+Any temporary/permanent storage mechanism that provides signed URLs for upload and download purposes can be a transporter. The transporter is attached to the Heavy HTTP Server so that it is fully decoupled from the Heavy HTTP client. Multiple transporters are already created for the popular storages in the [Heavy-HTTP/transporters](https://github.com/Heavy-HTTP/transporters) repository and they are ready to go. But if you would like to create your own transporter you can do it by just following the guidelines given in the [Heavy-HTTP/transporters](https://github.com/Heavy-HTTP/transporters#readme). This gives you the control of handling the request and response as you like. If you want to process the request in a lazy manner (given that request is heavy) that also can be achieved as well.
 
 ### Heavy HTTP Communication Protocol 
 ![alt text](https://github.com/Heavy-HTTP/.github/blob/main/profile/Heavy-HTTP-Communication-Protocol.png?raw=true)
