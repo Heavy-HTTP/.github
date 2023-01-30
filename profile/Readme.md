@@ -180,8 +180,9 @@ Under the hood, Heavy HTTP utilizes default HTTP for all communications. Because
 We are still in phase 1. There is a long journey ahead and we indent to move forward. 
 
 #### Game Plan
-1. The Web HTTP Client currently supports XMLHTTPRequest path only. Extending the capabilities to Fetch API is the next milestone. 
-2. On the client side Heavy HTTP Client implementations for runtimes like Java and Node are the next priority. 
+1. The Web HTTP Client currently supports XMLHTTPRequest path only. Extending the capabilities to Fetch API is the next milestone. :heavy_check_mark:
+2. On the client side Heavy HTTP Client implementations for non JS based frontend is the next priority (CDN based implementation). 
 3. On the server side Heavy HTTP Server implementations for runtimes like Java and Go are the next priority. 
+4. On both ends improve the performance of the transfer with parallel communication is the next major milestone. 
 
 If you are interested in this project and willing to help with coding, ideologies, testing or documentation, share your interest with us by dropping a message to heavyhttp@gmail.com.
